@@ -1,0 +1,6 @@
+- name: Deployment
+  hosts: all
+  tasks: 
+    - package: "name=httpd status=present"
+    - copy: -a "src=index.html" dest=/var/www/html"
+    - service: "name=httpd state=started"
