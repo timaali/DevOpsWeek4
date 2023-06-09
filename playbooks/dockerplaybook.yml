@@ -1,5 +1,5 @@
 - name: Yolo Deployment
-- hosts: all
+  hosts: all
   become: true
   vars:
     container_count: 4
