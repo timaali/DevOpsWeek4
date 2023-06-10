@@ -67,6 +67,16 @@
         src: ./../docker-compose.yml
         dest: "{{ app_folder }}/docker-compose.yml"
 
+    - name: Copy .evn file
+      template:
+          src: ./../backend
+          dest: "{{ app_folder }}/"
+
+    - name: Copy docker-compose file
+      template:
+        src: ./../docker-compose.yml
+        dest: "{{ app_folder }}/docker-compose.yml"
+
     - name: Start Containers
       shell: docker-compose up -d
       args:
