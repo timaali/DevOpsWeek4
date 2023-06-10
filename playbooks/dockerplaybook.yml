@@ -5,10 +5,6 @@
     client_image: timaali/client:latest
     backend_image: timaali/backend:latest
     app_folder: /opt/yolo
-    container_count: 4
-    default_container_name: docker
-    default_container_image: ubuntu
-    default_container_command: sleep 1d
 
   tasks:
     - name: Install aptitude
