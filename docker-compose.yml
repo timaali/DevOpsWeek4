@@ -2,7 +2,6 @@ version: '3.7'
 services: 
     client: 
         container_name: client
-        build: ./client/
         image: {{ client_image }}
         ports: 
           - 8080:80
@@ -11,7 +10,6 @@ services:
 
     backend:
         container_name: backend
-        build: ./backend/
         image: {{ backend_image }}
         env_file:
           - ./backend/.env
