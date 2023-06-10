@@ -69,7 +69,7 @@
 
     - name: Copy backend evn file
       template:
-          src: ./backend/.env
+          src: ../backend/.env
           dest: "{{ app_folder }}/backend"
 
     - name: Start Containers
