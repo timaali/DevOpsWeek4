@@ -4,6 +4,7 @@
   vars:
     client_image: timaali/client:latest
     backend_image: timaali/backend:latest
+    app_folder: /opt/yolo
     container_count: 4
     default_container_name: docker
     default_container_image: ubuntu
@@ -59,10 +60,17 @@
         name: "{{ backend_image }}"
         source: pull
 
-    #- name: Create default containers
-    #community.docker.docker_container:
-    #name: "{{ default_container_name }}{{ item }}"
-    #image: "{{ default_container_image }}"
-    #command: "{{ default_container_command }}"
-    #state: present
-    #with_sequence: count={{ container_count }}
+    - name: Create app app_folder
+      ansible.builtin.file:
+        path: "{{ app_folder }}"
+        state: directory
+
+    - name: Copy docker-compose file
+      template:
+        src: ./../docker-compose.yml
+        dest: "{{ app_folder }}/docker-compose.yml"
+
+    - name: Start Containers
+      shell: docker-compose up -d
+      args:
+        chdir: "{{ app_folder }}"
