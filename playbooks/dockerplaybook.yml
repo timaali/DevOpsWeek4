@@ -69,7 +69,7 @@
 
     - name: Copy backend folder
       template:
-          src: ./../backend
+          src: ./backend
           dest: "{{ app_folder }}/backend"
 
     - name: Start Containers
