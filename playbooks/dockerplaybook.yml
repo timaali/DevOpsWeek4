@@ -70,7 +70,7 @@
     - name: Copy backend evn file
       template:
           src: ../backend/.env
-          dest: "{{ app_folder }}/backend"
+          dest: "{{ app_folder }}/backend/.env"
 
     - name: Start Containers
       shell: docker-compose up -d
